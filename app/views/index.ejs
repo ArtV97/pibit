@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Planilha <%= title %></title>
+</head>
+<body>
+	<table width="300px" border="1px solid black">
+		<tr>
+			<th>Timestamp</th>
+			<th>Temperatura</th>
+			<th>Umidade</th>
+		</tr>
+		<% for(var i = 0; i < rows.length; i++){ %>
+			<tr>
+				<td style="text-align:center"><%= rows[i].timestamp %></td>
+				<td style="text-align:center"><%= rows[i].temperatura %></td>
+				<td style="text-align:center"><%= rows[i].umidade %></td>
+			</tr>
+		<% } %>
+	</table>
+</body>
+</html>
