@@ -11,13 +11,12 @@ app.set("views", "./app/views");
 app.use(express.static("./app/public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
-
 //auto-load
 consign()
-	.include("app/routes")
-	.then("app/models")
-	.then("app/controllers")
-	.then("config/googleSpreadsheetConnection.js")
+	.include(process.cwd() + "/app/routes")
+	.then(process.cwd() + "/app/models")
+	.then(process.cwd() + "/app/controllers")
+	.then(process.cwd() + "/config/googleSpreadsheetConnection.js")
 	.into(app);
 
 module.exports = app;
