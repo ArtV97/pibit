@@ -14,10 +14,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 //console.log(process.cwd()+"/app")
 
 //auto-load
-consign({cwd: process.cwd()})
-	.include("./app/routes")
-	.then("./app/models")
-	.then("./app/controllers")
+consign({cwd: process.cwd() + "/app"})
+	.include("app/routes")
+	.then("app/models")
+	.then("app/controllers")
 	.then("config/googleSpreadsheetConnection.js")
 	.into(app);
 
