@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //auto-load
 consign({cwd: process.cwd() + "/app"})
-	.include("app/routes")
-	.then("app/models")
-	.then("app/controllers")
+	.include("routes")
+	.then("models")
+	.then("controllers")
 	.then("config/googleSpreadsheetConnection.js")
 	.into(app);
 
