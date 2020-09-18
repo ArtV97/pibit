@@ -9,7 +9,8 @@ module.exports.index = function(application, req, res){
 
 module.exports.addRow = function(application, req, res){
 	var doc = application.config.googleSpreadsheetConnection;
-	var spreadSheetModels = new application.app.models.SpreadSheetModels(doc);
+	//var spreadSheetModels = new application.app.models.SpreadSheetModels(doc);
+	var spreadSheetModels = new application.models.SpreadSheetModels(doc);
 	
 	spreadSheetModels.addRow(req.query, function(error){
 		res.redirect("/");
