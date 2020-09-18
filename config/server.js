@@ -18,7 +18,7 @@ consign({cwd: process.cwd() + "/app"})
 	.include("routes")
 	.then("models")
 	.then("controllers")
-	.then("config/googleSpreadsheetConnection.js")
+	.then("../config/googleSpreadsheetConnection.js")
 	.into(app);
 
 module.exports = app;
