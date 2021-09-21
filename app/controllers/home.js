@@ -1,7 +1,7 @@
 module.exports.index = function(application, req, res){
 	var doc = application.config.googleSpreadsheetConnection;
-	var spreadSheetModels = new application.app.models.SpreadSheetModels(doc);
-	//var spreadSheetModels = new application.models.SpreadSheetModels(doc);
+	//var spreadSheetModels = new application.app.models.SpreadSheetModels(doc); // local
+	var spreadSheetModels = new application.models.SpreadSheetModels(doc);
 	spreadSheetModels.getRows(function(error, result){
 		res.render("index", {title: doc.title, rows: result});
 	});
@@ -9,8 +9,8 @@ module.exports.index = function(application, req, res){
 
 module.exports.addRow = function(application, req, res){
 	var doc = application.config.googleSpreadsheetConnection;
-	var spreadSheetModels = new application.app.models.SpreadSheetModels(doc);
-	//var spreadSheetModels = new application.models.SpreadSheetModels(doc);
+	//var spreadSheetModels = new application.app.models.SpreadSheetModels(doc); // local
+	var spreadSheetModels = new application.models.SpreadSheetModels(doc);
 	const aux = req.query.sensor_id.split("-")
 
 	const gateway = aux[0]
@@ -21,8 +21,8 @@ module.exports.addRow = function(application, req, res){
 	spreadSheetModels.checkTemp(gateway, Number(req.query.temperatura), function(error, mail_to){
 		console.log("Notificando por e-mail...")
 		var transporter = application.config.mail
-		var mailModel = new application.app.models.mailModels(transporter)
-		//var mailModel = new application.models.mailModels(transporter)
+		//var mailModel = new application.app.models.mailModels(transporter) // local
+		var mailModel = new application.models.mailModels(transporter)
 
 		const from = "Prática IoT"
 		const subject = "Problema com temperatura no sensor " + sensor + "!"
