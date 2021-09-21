@@ -19,7 +19,6 @@ module.exports.addRow = function(application, req, res){
 	req.query.sensor_id = sensor
 	console.log("Chamando checkTemp: ", gateway, req.query.temperatura)
 	spreadSheetModels.checkTemp(gateway, Number(req.query.temperatura), function(error, mail_to){
-		console.log("Notificando por e-mail...")
 		var transporter = application.config.mail
 		//var mailModel = new application.app.models.mailModels(transporter) // local
 		var mailModel = new application.models.mailModels(transporter)
@@ -30,12 +29,12 @@ module.exports.addRow = function(application, req, res){
 		const mailOptions = {"from": from, "to": mail_to, "subject": subject, "text": text}
 		
 		mailModel.send(mailOptions, function(err, info){
-			console.log(info)
+			console.log("Erro mail: ",err)
 		})
 	});
 
 	spreadSheetModels.addRow(gateway, req.query, function(error){
-		console.log("Insert Data:", req.query)
+		//console.log("Insert Data:", req.query)
 		res.redirect("/");
 	});
 };

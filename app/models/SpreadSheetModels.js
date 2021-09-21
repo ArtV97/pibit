@@ -33,7 +33,6 @@ SpreadSheetModels.prototype.checkTemp = async function(gateway_id, temp, callbac
 			let temp_ctrl = rows[i].temperatura_controle.split(";")
 			const t0 = Number(temp_ctrl[0])
 			const t1 = Number(temp_ctrl[1])
-			console.log(t0, temp, t1)
 
 			if (t0 > temp || temp > t1) {
 				callback(null, rows[i].email);
