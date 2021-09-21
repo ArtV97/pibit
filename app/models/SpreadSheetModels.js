@@ -15,7 +15,7 @@ SpreadSheetModels.prototype.addRow = async function(gateway_id, row, callback){
 		
 		let array = []
 		for (let i in row) {array.push(i)}
-		sheet.setHeaderRow(array)
+		await sheet.setHeaderRow(array)
 
 		//const config_sheet = this._doc.sheetsByTitle["config"]
 		//await config_sheet.addRow({"gateway": gateway_id, "email": ""})
