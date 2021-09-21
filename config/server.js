@@ -19,6 +19,7 @@ consign({cwd: process.cwd()})
 	.then("./app/models")
 	.then("./app/controllers")
 	.then("./config/googleSpreadsheetConnection.js")
+	.then("./config/mail.js")
 	.into(app);
 
 module.exports = app;
